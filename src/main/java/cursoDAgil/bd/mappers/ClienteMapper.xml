@@ -12,7 +12,7 @@
 		<result column="nombre" jdbcType="VARCHAR" property="nombre" />
  		<result column="apellido" jdbcType="VARCHAR" property="apellido" />
  		<result column="email" jdbcType="VARCHAR" property="email" />
-	 	<result column="sexo" jdbcType="VARCHAR" property="sexo" />
+	 	<result column="sexo" jdbcType="VARCHAR" property="sexo"/>
  		<result column="idDireccion" jdbcType="INTEGER" property="idDireccion" />
 	</resultMap>
 	<resultMap id="ResultClienteDireccion" type="cursoDAgil.bd.domain.Cliente">

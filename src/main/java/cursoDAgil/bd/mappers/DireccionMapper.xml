@@ -23,4 +23,10 @@
 		SELECT dir.idDireccion, dir.calle, dir.numero, dir.colonia, dir.ciudad, dir.estado, dir.pais, dir.codigoPostal
 		FROM equipo5.direccion dir WHERE idDireccion = #{idDireccion}
 	</select>
+	<update id="moficiarDireccionPorId" parameterType="cursoDAgil.bd.domain.Direccion" keyProperty="idDireccion">
+		UPDATE direccion 
+		SET (calle, numero, colonia, ciudad, estado, pais, codigoPostal) 
+		VALUES (#{calle}, #{numero}, #{colonia}, #{ciudad}, #{estado}, #{pais}, #{codigoPostal})
+		WHERE idDireccion = #{idDireccion}
+	</update>
 </mapper>

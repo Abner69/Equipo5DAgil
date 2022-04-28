@@ -19,15 +19,26 @@ public interface ClienteMapper {
 	List<Cliente> listarTodosClientes();
 	
 	/**
-	 * Metodo para dar de alta un cliente en la base de datos
+	 * Metodo para listar un cliente en especifico usando us Id
 	 * @return Cliente
 	 */
-	Cliente darDeAlta();
+	Cliente obtenerClientePorId(int id);
+	
+	/**
+	 * Metodo para dar de alta un cliente en la base de datos
+	 * @return void
+	 */
+	void nuevoCLiente(Cliente cliente);
 	
 	/**
 	 * Metodo para dar de baja un cliente en la base de datos
 	 * @return void
 	 */
-	void darDeBaja();
+	void darDeBajaClientePorId(int id);
 	
+	/**
+	 * Metodo para modificar un cliente mediante su Id
+	 * @return void
+	 */
+	void moficiarClientePorId(int id);	
 }

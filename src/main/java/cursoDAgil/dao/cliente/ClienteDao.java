@@ -19,14 +19,26 @@ public interface ClienteDao {
 	List<Cliente> listarTodosClientes();
 	
 	/**
-	 * Metodo para dar de alta un cliente en la base de datos
+	 * Metodo para listar un cliente en especifico usando us Id
 	 * @return Cliente
 	 */
-	Cliente darDeAlta();
+	Cliente obtenerClientePorId(int id);
 	
 	/**
-	 * Metodo para dar de baja un cliente en la base de datos
+	 * Metodo para dar de alta un cliente en la base de datos
 	 * @return void
 	 */
-	void darDeBaja();
+	void nuevoCLiente(Cliente cliente);
+	
+	/**
+	 * Metodo para dar de alta un cliente en la base de datos
+	 * @return void
+	 */
+	void darDeBajaClientePorId(Cliente cliente);
+	
+	/**
+	 * Metodo para modificar un cliente mediante su Id
+	 * @return void
+	 */
+	void moficiarClientePorId(int id);	
 }

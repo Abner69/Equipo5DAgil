@@ -49,19 +49,6 @@ public class ClienteDaoImpl implements ClienteDao, Serializable{
 		}
 		return null;
 	}
-
-	@Override
-	public void nuevoCLiente(Cliente cliente) {
-		try {
-			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
-			clienteMapper.nuevoCLiente(cliente);
-			System.out.println("Cliente con Id: " + cliente.getId() + "\nInsertado Exitosamente");
-		} catch (Exception e) {
-			System.out.println("Error: " + e);
-		}
-		
-		
-	}
 	
 	@Override
 	public Cliente obtenerClientePorId(int id) {
@@ -79,21 +66,43 @@ public class ClienteDaoImpl implements ClienteDao, Serializable{
 		}
 		return cliente;
 	}
-
+	
 	@Override
-	public void moficiarClientePorId(int id) {
-		Cliente cliente = new Cliente();
-		
+	public void darAltaCliente(Cliente cliente) {
 		try {
-			
+			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
+			clienteMapper.darAltaCliente(cliente);
+			System.out.println("Cliente con Id: " + cliente.getId() + "\nInsertado Exitosamente");
 		} catch (Exception e) {
 			System.out.println("Error: " + e);
 		}
 	}
 
 	@Override
-	public void darDeBajaClientePorId(Cliente cliente) {
-		// TODO Auto-generated method stub
+	public void modificarClientePorId(Cliente cliente) {
+		try {
+			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
+			clienteMapper.modificarClientePorId(cliente);
+			System.out.println("Se modifico el cliente con id: " + cliente.getId());
+			System.out.println("Con los siguiente datos: ");
+			System.out.println("Nombre: " + cliente.getNombre() + " " + cliente.getApellido());
+			System.out.println("Email: " + cliente.getEmail());
+			System.out.println("Sexo: " + cliente.getSexo());
+			System.out.println("Id Direccion: " + cliente.getIddireccion());
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
+	}
+
+	@Override
+	public void darDeBajaClientePorId(int  id) {
+		try {
+			ClienteMapper clienteMapper = sqlSession.getMapper(ClienteMapper.class);
+			clienteMapper.darDeBajaClientePorId(id);
+			System.out.println("Se ha dado de baja el cliente con id: " + id);
+		} catch (Exception e) {
+			System.out.println("Error: " + e);
+		}
 		
 	}
 

@@ -34,25 +34,30 @@
 		<result column="pais" property="pais" />
 		<result column="codigoPostal" property="codigoPostal" />
 	</resultMap>
+	
 	<select id="listarTodosClientes" resultMap="ResultClienteDireccion">
 		SELECT cli.id, cli.nombre, cli.apellido, cli.email, cli.sexo, cli.idDireccion, d.idDireccion, d.calle, d.numero, d.colonia, d.ciudad, d.estado, d.pais, d.codigoPostal
 		FROM equipo5.cliente cli INNER JOIN direccion AS d ON cli.idDireccion = d.idDireccion
 	</select>
-	<insert id="nuevoCLiente" parameterType="cursoDAgil.bd.domain.Cliente" useGeneratedKeys="true">
+	
+	<select id="obtenerClientePorId" resultMap="ResultClienteDireccion" parameterType="int">
+		SELECT cli.id, cli.nombre, cli.apellido, cli.email, cli.sexo, cli.idDireccion, d.idDireccion, d.calle, d.numero, d.colonia, d.ciudad, d.estado, d.pais, d.codigoPostal
+		FROM equipo5.cliente cli INNER JOIN direccion AS d ON cli.idDireccion = d.idDireccion WHERE cli.id = #{id}
+	</select>
+	
+	<insert id="darAltaCliente" parameterType="cursoDAgil.bd.domain.Cliente" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO cliente (nombre, apellido, email, sexo, idDireccion)
 		VALUES (#{nombre}, #{apellido}, #{email}, #{sexo}, #{idDireccion})
 	</insert>
-	<select id="obtenerClientePorId" resultMap="BaseResultMap" parameterType="hashMap">
-		SELECT cli.id, cli.nombre, cli.apellido, cli.email, cli.sexo, cli.idDireccion
-		FROM equipo5.cliente
-		WHERE cli.id = #{id}
-	</select>
-	<update id="moficiarClientePorId" parameterType="cursoDAgil.bd.domain.Cliente" keyProperty="id">
+	
+	<delete id="darDeBajaClientePorId"  parameterType="int">
+		DELETE FROM cliente
+		WHERE id = #{id}
+	</delete>
+	
+	<update id="modificarClientePorId" parameterType="cursoDAgil.bd.domain.Cliente">
 		UPDATE cliente 
-		SET (nombre, apellido, email, sexo, idDireccion) 
-		VALUES (#{nombre}, #{apellido}, #{email}, #{sexo}, #{idDireccion})
+		SET nombre = #{nombre}, apellido = #{apellido}, email = #{email}, sexo = #{sexo}, idDireccion = #{idDireccion}
 		WHERE id = #{id}
 	</update>
-	<!-- <delete id="darDeBajaClientePorId"  keyProperty="hashmap">
-	</delete> -->
 </mapper>

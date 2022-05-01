@@ -28,17 +28,17 @@ public interface ClienteDao {
 	 * Metodo para dar de alta un cliente en la base de datos
 	 * @return void
 	 */
-	void nuevoCLiente(Cliente cliente);
+	void darAltaCliente(Cliente cliente);
 	
 	/**
-	 * Metodo para dar de alta un cliente en la base de datos
+	 * Metodo para dar de baja un cliente en la base de datos
 	 * @return void
 	 */
-	void darDeBajaClientePorId(Cliente cliente);
+	void darDeBajaClientePorId(int id);
 	
 	/**
 	 * Metodo para modificar un cliente mediante su Id
 	 * @return void
 	 */
-	void moficiarClientePorId(int id);	
+	void modificarClientePorId(Cliente cliente);	
 }
